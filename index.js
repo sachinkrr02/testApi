@@ -43,7 +43,7 @@ const User = mongoose.model("user" ,userSchema);
 app.use(express.urlencoded({extended :false}));
 
 // Routes
-app.get("/" ,(req ,res)=> {
+app.get("/users" ,(req ,res)=> {
     const html = `
     <ul>
     ${users.map((user) => `<li> ${user.first_name} </li>`).join("")}
