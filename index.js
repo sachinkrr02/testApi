@@ -5,13 +5,12 @@ const mongoose = require("mongoose");
 
 // const users = require('./MOCK_DATA.json');
 
-
 const app = express();
 const PORT = 2002;
 
 //mongoose connection
 
-mongoose.connect("mongodb://127.0.0.1:27017/property").then(() => console.log("MongoDB Connected")).catch((err) => console.log("Mongo Error" ,err));
+mongoose.connect("mongodb+srv://skum0263:Database123@testing.dhtsptq.mongodb.net/test?retryWrites=true&w=majority").then(() => console.log("MongoDB Connected")).catch((err) => console.log("Mongo Error" ,err));
 
 //schema 
 const userSchema = new mongoose.Schema({
@@ -43,22 +42,26 @@ const User = mongoose.model("user" ,userSchema);
 app.use(express.urlencoded({extended :false}));
 
 // Routes
-app.get("/users" ,(req ,res)=> {
-    const html = `
-    <ul>
-    ${users.map((user) => `<li> ${user.first_name} </li>`).join("")}
-    </ul>
-    `;
-    res.send(html);
-}) //to display the json file in html format
+// app.get("/users" ,(req ,res)=> {
+//     const html = `
+//     <ul>
+//     ${users.map((user) => `<li> ${user.first_name} </li>`).join("")}
+//     </ul>
+//     `;
+//     res.send(html);
+// }) //to display the json file in html format
 
 
 //Rest api points
+
+app.get("/", (req, res) => {
+    res.send("Hi,the API is working.");
+  });
+  
 app.get("/api/users" , async(req ,res) =>{
     const allusers = await User.find({});
     return res.json(allusers);
 }) // get users api 
-
 
 app.get("/api/users/:id" , async (req,res)=> {
 
