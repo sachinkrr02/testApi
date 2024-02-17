@@ -54,7 +54,7 @@ app.get("/users" ,(req ,res)=> {
 
 
 //Rest api points
-app.get("/" , async(req ,res) =>{
+app.get("/api/users" , async(req ,res) =>{
     const allusers = await User.find({});
     return res.json(allusers);
 }) // get users api 
