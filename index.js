@@ -43,14 +43,14 @@ const User = mongoose.model("user" ,userSchema);
 app.use(express.urlencoded({extended :false}));
 
 // Routes
-app.get("/users" ,(req ,res)=> {
-    const html = `
-    <ul>
-    ${users.map((user) => `<li> ${user.first_name} </li>`).join("")}
-    </ul>
-    `;
-    res.send(html);
-}) //to display the json file in html format
+// app.get("/users" ,(req ,res)=> {
+//     const html = `
+//     <ul>
+//     ${users.map((user) => `<li> ${user.first_name} </li>`).join("")}
+//     </ul>
+//     `;
+//     res.send(html);
+// }) //to display the json file in html format
 
 
 //Rest api points
